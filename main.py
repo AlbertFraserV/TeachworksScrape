@@ -70,7 +70,7 @@ for lesson in students:
         working_hours['test_prep'] += total_time
     else:
         working_hours['school'] += total_time
-
+breakpoint()
 wages = (working_hours['test_prep']*TEST_PREP_WAGE + working_hours['school']*SCHOOL_WAGE)*TAX_RATE
 print(f"You made {str(wages)} after taxes today!")
 
