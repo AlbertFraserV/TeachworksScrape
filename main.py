@@ -71,6 +71,7 @@ for lesson in students:
     else:
         working_hours['school'] += total_time
 breakpoint()
-wages = (working_hours['test_prep']*TEST_PREP_WAGE + working_hours['school']*SCHOOL_WAGE)*TAX_RATE
-print(f"You made {str(wages)} after taxes today!")
+wages = (working_hours['test_prep']*TEST_PREP_WAGE + working_hours['school']*SCHOOL_WAGE)*(1-TAX_RATE)
+print(f"You made {str(round(wages,2))} after taxes today!")
+driver.close()
 
