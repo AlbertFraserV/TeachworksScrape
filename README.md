@@ -7,11 +7,11 @@ Anyone else using Teachworks, feel free to use it! I will eventually add more fu
 
 Set up an .env in the same directoy as the script with the following values:
 
-USERNAME=teachworks login name<br>
-PASS=teachworks password
-TESTPREP=Test prep hourly rate
-SCHOOL=School tutoring hourly rate
-TAX=What percentage of taxes are taken out of your check each week
+* USERNAME=teachworks login name
+* PASS=teachworks password
+* TESTPREP=Test prep hourly rate
+* SCHOOL=School tutoring hourly rate
+* TAX=What percentage of taxes are taken out of your check each week
 
 Pip Package Requirements:
 Selenium using Firefox
