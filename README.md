@@ -13,10 +13,10 @@ Set up an .env in the same directoy as the script with the following values:
 * SCHOOL=School tutoring hourly rate
 * TAX=What percentage of taxes are taken out of your check each week
 
-Pip Package Requirements:
-Selenium using Firefox
-BeautifulSoup
-DotEnv
+## Pip Package Requirements:
+* Selenium using Firefox
+* BeautifulSoup
+* DotEnv
 
 # TODO
 * Setup SQLITE DB
