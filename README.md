@@ -18,7 +18,7 @@ Set up an .env in the same directoy as the script with the following values:
 * BeautifulSoup
 * DotEnv
 
-# TODO
+## TODO
 * Setup SQLITE DB
 * Setup simple webapp to track everything
 * Add in budgetting 
