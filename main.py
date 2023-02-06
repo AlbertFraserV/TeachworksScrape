@@ -10,7 +10,7 @@ import time
 from database import Database
 
 cur = Database()
-
+breakpoint()
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -77,8 +77,9 @@ for lesson in students:
 
 wages = (working_hours['test_prep']*TEST_PREP_WAGE + working_hours['school']*SCHOOL_WAGE)*(1-TAX_RATE)
 print(f"You made {str(round(wages,2))} after taxes today!")
+sql = f"INSERT INTO daily_pay (daily_pay_date, daily_pay) VALUES('{today}', {wages});"
+print(sql)
+cur.commit(sql)
 driver.close()
 
-sql = f"INSERT INTO weekly_pay (wp_hours_test, wp_hours_school, wp_gross_pay, wp_date) VALUES({working_hours['test_prep']}, {working_hours['school']}, {wages}, {today});"
-cur.commit(sql)
 
