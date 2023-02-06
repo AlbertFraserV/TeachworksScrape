@@ -13,3 +13,4 @@ wages = (working_hours['test_prep']*teachworks.TEST_PREP_WAGE + working_hours['s
 print(f"You made {str(round(wages,2))} after taxes today!")
 sql = f"INSERT INTO daily_pay (daily_pay_date, daily_pay) VALUES('{teachworks.today}', {wages});"
 conn.commit(sql)
+teachworks.close_driver()

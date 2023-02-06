@@ -17,6 +17,9 @@ class Teachworks:
         self.TAX_RATE = float(os.environ.get('TAX'))/100
         self.time_format = "%I:%M %p"
 
+    def close_driver(self):
+        self.driver.close()
+
     def login(self):
         self.driver.get(self.url)
         time.sleep(5)
