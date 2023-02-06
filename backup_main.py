@@ -46,8 +46,11 @@ calendar_list_button.click()
 time.sleep(1)
 
 #Pull only the current date
-today = driver.find_element("xpath",  '//*[@id="start"]').get_dom_attribute('value')
-end_date = driver.find_element("xpath",  '//*[@id="end"]')
+try:
+    today = driver.find_element("xpath",  '//*[@id="start"]').get_dom_attribute('value')
+    end_date = driver.find_element("xpath",  '//*[@id="end"]')
+except:
+    breakpoint()
 end_date.send_keys(today)
 time.sleep(1)
 driver.find_element("xpath", "//body").click()

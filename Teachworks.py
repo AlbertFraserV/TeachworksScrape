@@ -29,8 +29,15 @@ class Teachworks:
         password_box.send_keys(self.PASSWORD)
         time.sleep(1)
         submit_button.click()
+        time.sleep(2)
 
     def navigate_to_calendar_list(self):
+        calendar_button = self.driver.find_element("xpath", '/html/body/header/div/nav/ul[1]/li[2]/a')
+        calendar_button.click()
+        time.sleep(1)
+        calendar_list_button = self.driver.find_element("xpath", "/html/body/header/div/nav/ul[1]/li[2]/ul/li[4]/a")
+        calendar_list_button.click()
+        time.sleep(1)
         self.today = self.driver.find_element("xpath",  '//*[@id="start"]').get_dom_attribute('value')
         end_date = self.driver.find_element("xpath",  '//*[@id="end"]')
         end_date.send_keys(self.today)
