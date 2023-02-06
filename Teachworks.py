@@ -2,9 +2,12 @@ from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
 class Teachworks:
     def __init__(self):
+        load_dotenv()
         self.url = "http://homeworkhelperstutoring.teachworks.com"
         self.driver = webdriver.Firefox(executable_path = '/usr/local/bin/geckodriver')
         self.USER = os.getenv('USERNAME')
