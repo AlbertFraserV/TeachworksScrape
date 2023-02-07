@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.path.abspath("../src"))
+sys.path.append(os.path.abspath("/Users/alv/Documents/Scripts/Teachworks/webapp/src"))
 from Teachworks import Teachworks
 from database import Database
 

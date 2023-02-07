@@ -2,7 +2,7 @@ import sqlite3
 
 class Database:
     def __init__(self):
-        self.conn = sqlite3.connect("/Users/alv/Documents/Scripts/Teachworks/Teachworks")
+        self.conn = sqlite3.connect("/Users/alv/Documents/Scripts/Teachworks/webapp/db.sqlite3")
 
     def get(self, sql):
         cursor = self.conn.cursor()
@@ -15,5 +15,3 @@ class Database:
         cursor.execute(sql)
         self.conn.commit()
         cursor.close()
-
-    
