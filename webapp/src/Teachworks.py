@@ -34,16 +34,29 @@ class Teachworks:
         submit_button.click()
         time.sleep(2)
 
-    def navigate_to_calendar_list(self):
+    def navigate_to_calendar_list(self, date = None, today = True):
         calendar_button = self.driver.find_element("xpath", '/html/body/header/div/nav/ul[1]/li[2]/a')
         calendar_button.click()
         time.sleep(1)
         calendar_list_button = self.driver.find_element("xpath", "/html/body/header/div/nav/ul[1]/li[2]/ul/li[4]/a")
         calendar_list_button.click()
         time.sleep(1)
-        self.today = self.driver.find_element("xpath",  '//*[@id="start"]').get_dom_attribute('value')
+        start_date = self.driver.find_element("xpath",  '//*[@id="start"]')
+        self.today = start_date.get_dom_attribute('value')
         end_date = self.driver.find_element("xpath",  '//*[@id="end"]')
-        end_date.send_keys(self.today)
+        if today:
+            end_date.send_keys(self.today)
+        else:
+            # breakpoint()
+            start_date.clear()
+            end_date.clear()
+            for c in date:
+                start_date.send_keys(c)
+            #self.driver.find_element("xpath", "//body").click()
+            for c in date:
+                end_date.send_keys(date)
+            self.today = date
+        # breakpoint()
         time.sleep(1)
         self.driver.find_element("xpath", "//body").click()
         time.sleep(1)
@@ -60,6 +73,8 @@ class Teachworks:
     def calculate_hours(self, sessions):
         working_hours = {'test_prep': 0, 'school': 0}
         for lesson in sessions:
+            if len(lesson.find_all('td')) == 0:
+                break
             time_range = lesson.find_all('td')[0].text
             time_range = time_range.split(" - ")
             lesson_type = lesson.find_all('td')[6].text
@@ -70,5 +85,7 @@ class Teachworks:
                 working_hours['test_prep'] += total_time
             else:
                 working_hours['school'] += total_time
+
+        breakpoint()
 
         return working_hours
