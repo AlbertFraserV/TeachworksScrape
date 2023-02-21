@@ -86,6 +86,4 @@ class Teachworks:
             else:
                 working_hours['school'] += total_time
 
-        breakpoint()
-
         return working_hours
