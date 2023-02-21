@@ -4,6 +4,7 @@ class DailySpent(models.Model):
     spent_date = models.DateField()
     spent_amount = models.FloatField()
     spent_name = models.CharField(max_length=64)
+
     def __str__(self):
         return f"{self.spent_name} on {self.spent_date}: ${self.spent_amount}"
 
@@ -19,3 +20,7 @@ class Debt(models.Model):
     debt_amount = models.FloatField()
     def __str__(self):
         return f"{self.debt_name} - {self.debt_type} debt: ${self.debt_amount}"
+
+class DailyNet(models.Model):
+    daily_date = models.DateField(unique=True)
+    daily_net_earnings = models.FloatField()

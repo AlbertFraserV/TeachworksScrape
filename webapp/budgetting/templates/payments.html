@@ -1,0 +1,15 @@
+<h1>Latest Earnings</h1>
+<ul>
+    <table>
+        <tr>
+            <th>Earned Date</th>
+            <th>Earned Amount</th> 
+        </tr>
+        {% for payment in latest_earnings %}
+        <tr>
+            <td>{{ payment.paid_date }}</td>
+            <td>{{ payment.paid_amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</ul>
