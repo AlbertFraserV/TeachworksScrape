@@ -1,29 +1,45 @@
+<style>
+    .container {
+        display: flex;
+    }
+</style>
+
 <h1>Latest Spendings</h1>
 <ul>
-    <table>
-        <tr>
-            <th>Spend Date</th>
-            <th>Spent Amount</th> 
-            <th>Spend Name</th>
-        </tr>
-        {% for spending in latest_spendings %}
-        <tr>
-            <td>{{ spending.spent_date }}</td>
-            <td>{{ spending.spent_amount }}</td>
-            <td>{{ spending.spent_name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <form action="{% url 'budget:addSpending' %}" method="post">
-        {% csrf_token %}
-        <fieldset>
-            <label for="spent_amount">Amount:</label>
-            <input type="text" id="spent_amount" name="spent_amount"><br><br>
-            <label for="spent_name">Transaction Name:</label>
-            <input type="text" id="spent_name" name="spent_name"><br><br>
-            <label for="spent_date">Transaction Date:</label>
-            <input type="date" id="spent_date" name="spent_date"><br><br>
-        </fieldset>
-        <input type="submit" value="Sumbit">
+    <div class="container">
+        <table>
+            <tr>
+                <th>Spend Date</th>
+                <th>Spent Amount</th> 
+                <th>Spend Name</th>
+            </tr>
+            {% for spending in latest_spendings %}
+            <tr>
+                <td>{{ spending.spent_date }}</td>
+                <td>{{ spending.spent_amount }}</td>
+                <td>{{ spending.spent_name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action="{% url 'budget:addSpending' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <label for="spent_amount">Amount:</label>
+                <input type="text" id="spent_amount" name="spent_amount"><br><br>
+                <label for="spent_name">Transaction Name:</label>
+                <input type="text" id="spent_name" name="spent_name"><br><br>
+                <label for="spent_date">Transaction Date:</label>
+                <input type="date" id="spent_date" name="spent_date"><br><br>
+            </fieldset>
+            <input type="submit" value="Sumbit">
         </form>
+    </div>
 </ul>
+
+<script>
+    function showCalendar(event) {
+        var input = event.target;
+        var datepicker = input.nextElementSibling;
+        datepicker.classList.toggle('datepicker');
+    }
+</script>
