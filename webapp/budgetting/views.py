@@ -11,7 +11,7 @@ from .models import DailyPaid, DailySpent, DailyNet
 
 def index(request):
     latest_earnings = DailyPaid.objects.order_by('-paid_date')
-    
+
     template = loader.get_template('index.html')
     context = {
         'latest_earnings': latest_earnings,
@@ -50,11 +50,6 @@ def updateNetSpendingDay():
         total_spendings = DailySpent.objects.filter(spent_date=date).aggregate(Sum('spent_amount'))['spent_amount__sum'] or 0
         net_pay = total_payments - total_spendings
         DailyNet.objects.update_or_create(daily_date=date, defaults={'daily_net_earnings': f'{net_pay}'})
-
-def recalcAllNetSpendings(request):
-    all_dates = DailyPaid.objects.values('paid_date').distinct()
-    for dates in all_dates:
-        updateNetSpendingDay(dates['spent_date'])
 
 def calculateTotalNetEarnings():
     total = DailyNet.objects.aggregate(total=Round(Sum('daily_net_earnings'),2))
