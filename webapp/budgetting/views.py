@@ -11,6 +11,7 @@ from .models import DailyPaid, DailySpent, DailyNet
 
 def index(request):
     latest_earnings = DailyPaid.objects.order_by('-paid_date')
+    
     template = loader.get_template('index.html')
     context = {
         'latest_earnings': latest_earnings,
@@ -37,6 +38,7 @@ def addSpendings(request):
     new_amount.save()
     updateNetSpendingDay(date=request.POST['spent_date'])
     return HttpResponseRedirect(reverse('budget:spendings'))
+
 
 def updateNetSpendingDay():
     # Get unique dates from both Payment and Spending models
